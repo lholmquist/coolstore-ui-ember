@@ -1,0 +1,21 @@
+<div class="border-4">
+  <h3>Shopping Summary</h3>
+  <div class="panel-body">
+
+			<h3>Cart Total: {{currency this.subtotal}}</h3>
+			<h3>Promotional Item Savings: {{currency @cart.cart.cartItemPromoSavings}}</h3>
+			<h3>Subtotal: {{currency @cart.cart.cartItemTotal}}</h3>
+			<h3>Shipping: {{currency @cart.cart.shippingTotal}}</h3>
+			<h3>Promotional Shipping Savings: {{currency @cart.cart.shippingPromoSavings}}</h3>
+			<h2>
+				Total Order Amount: <strong>{{currency @cart.cart.cartTotal}}</strong>
+			</h2>
+		</div>
+    <div>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        type="button" {{on "click" this.goToCheckout}}>
+          Checkout
+      </button>
+    </div>
+</div>

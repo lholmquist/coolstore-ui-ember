@@ -1,0 +1,10 @@
+{{page-title "Cart"}}
+<ShoppingSummary @cart={{this.cart}} />
+<ul role="list" class="divide-y divide-gray-100">
+  {{#each this.cart.cart.cartItems as |cartItem|}}
+    <CartItems @cartItem={{cartItem}} @removeItem={{this.removeItem}}/>
+  {{else}}
+  You have not added any items to your Shopping Cart! <LinkTo @route="index">Continue Shopping</LinkTo>
+  {{/each}}
+</ul>
+{{outlet}}

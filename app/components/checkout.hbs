@@ -1,0 +1,48 @@
+<div>
+  <h3>Thank you for shopping at the Coolstuff Store!</h3>
+  <div>Your order total of {{this.cart.cart.cartTotal}} will be processed once we have all your details. Remember to press checkout when done.</div>
+
+  <div>
+      <label for="name">Name</label>
+      <Input
+        id="name"
+        @type="text"
+        @value={{this.name}}
+      />
+
+      <label for="number">Card Info</label>
+      <Input
+        id="number"
+        @type="text"
+        @value={{this.number}}
+      />
+
+      CVC: <Input
+        id="cvc"
+        @type="text"
+        @value={{this.cvc}}
+      />
+
+      Month: <Input
+        id="month"
+        @type="text"
+        @value={{this.month}}
+      />
+
+      Year: <Input
+        id="year"
+        @type="text"
+        @value={{this.year}}
+      />
+
+      <label for="shippingAddress">Shipping Address</label>
+      <Input
+        id="shippingAddress"
+        @type="text"
+        @value={{this.shippingAddress}}
+      />
+<div>
+  <button type="button" {{on "click" this.getCheckoutData}}>Checkout</button>
+</div>
+  </div>
+</div>
