@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 export default class CheckoutComponent extends Component {
   @service cart;
+  @service router;
 
   @action
   getCheckoutData() {
@@ -15,11 +16,19 @@ export default class CheckoutComponent extends Component {
       creditCard: {
         number: this.number,
         expiration: `${this.month}/${this.year}`,
-        nameOnCard: this.name
+        nameOnCard: this.name,
       },
       billingAddress: this.shippingAddress,
-      name: this.name
+      name: this.name,
     };
-    this.cart.checkout(billingInfo);
+
+    console.log(billingInfo);
+    // this.cart.checkout(billingInfo);
+  }
+
+  @action
+  goToCart() {
+    console.log('go to cart');
+    this.router.transitionTo('cart');
   }
 }

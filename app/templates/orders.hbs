@@ -1,7 +1,45 @@
 {{page-title "Orders"}}
-
-{{#each @model as |order|}}
-  <li>{{order}}</li>
-{{/each}}
+<table class="table-auto w-full text-sm text-left">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+    <tr>
+      <th scope="col" class="px-6 py-3">
+          Order Id
+      </th>
+      <th scope="col" class="px-6 py-3">
+          Name
+      </th>
+      <th scope="col" class="px-6 py-3">
+          Order Total
+      </th>
+      <th scope="col" class="px-6 py-3">
+          Credit Card Number
+      </th>
+      <th scope="col" class="px-6 py-3">
+          Credit Card Expiration
+      </th>
+      <th scope="col" class="px-6 py-3">
+          Billing Address
+      </th>
+      <th scope="col" class="px-6 py-3">
+          Payment Status
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @model as |order|}}
+       <tr class="odd:bg-white even:bg-gray-50 border-b">
+          <td class="px-6 py-4">{{ order.orderId }}</td>
+          <td class="px-6 py-4">{{ order.name }}</td>
+          <td class="px-6 py-4">{{ currency order.total }}</td>
+          <td class="px-6 py-4">{{ order.ccNumber }}</td>
+          <td class="px-6 py-4">{{ order.ccExp }}</td>
+          <td class="px-6 py-4">{{ order.billingAddress }}</td>
+          <td class="px-6 py-4">
+            <span class="font-bold {{payment-status order.status}}">{{ order.status }}</span>
+          </td>
+       </tr>
+    {{/each}}
+  </tbody>
+</table>
 
 {{outlet}}

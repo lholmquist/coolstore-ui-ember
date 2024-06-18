@@ -5,18 +5,14 @@
   <h3 class="mt-4 text-sm text-gray-700">{{@product.desc}}</h3>
   <p class="mt-1 text-lg font-medium text-gray-900">{{currency @product.price}}</p>
   <label for="quan">Quantity</label>
-  <select name="quan" {{on 'change' this.changeSelect}}>
+  <select id="quan" name="quan" {{on 'change' this.changeSelect}}>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
   </select>
-  <button type="button" {{on "click" (fn this.addToCart @product)}}>Add To Cart</button>
-</div>
-
-<div class="p-6">
   <div>
-    <img src="/images/{{@product.image}}" alt="{{@product.desc}}">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button" {{on "click" (fn this.addToCart @product)}}>Add To Cart</button>
   </div>
 </div>

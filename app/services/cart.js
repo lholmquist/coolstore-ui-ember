@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { A } from '@ember/array';
 
 function createCartUrl() {
   const protocolUrl = 'http://';
@@ -62,6 +63,7 @@ async function checkoutWithBilling({ billingInfo, cartId }) {
 
 export default class CartService extends Service {
   @tracked cart;
+  @tracked cartNotifications = A([]);
 
   async initialize() {
     // Get id from localstorage
@@ -81,13 +83,33 @@ export default class CartService extends Service {
 
   async addCartItem(item, quantity) {
     // Add to the remote cart
-    const returnedCart = await putCartData({
-      item,
-      quantity,
-      cartId: this.cart.cartId,
-    });
-    // Add to the local store
-    this.cart = returnedCart;
+    let returnedCart;
+    try {
+      returnedCart = await putCartData({
+        item,
+        quantity,
+        cartId: this.cart.cartId,
+      });
+
+      // Add to the local store
+      this.cart = returnedCart;
+
+      this.cartNotifications.pushObject({
+        status: 'success',
+        cartTotal: returnedCart.cartTotal,
+      });
+    } catch (err) {
+      console.log(err);
+
+      this.cartNotifications.pushObject({
+        status: 'fail'
+      });
+    }
+
+    // set a timer to remove the object?
+    setTimeout(() => {
+      this.cartNotifications.popObject();
+    }, 3000);
   }
 
   async getCart() {

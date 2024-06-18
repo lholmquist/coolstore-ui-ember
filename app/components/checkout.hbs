@@ -1,48 +1,96 @@
-<div>
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
   <h3>Thank you for shopping at the Coolstuff Store!</h3>
-  <div>Your order total of {{this.cart.cart.cartTotal}} will be processed once we have all your details. Remember to press checkout when done.</div>
+  <div>Your order total of {{currency this.cart.cart.cartTotal}} will be processed once we have all your details. Remember to press checkout when done.</div>
 
-  <div>
-      <label for="name">Name</label>
-      <Input
-        id="name"
-        @type="text"
-        @value={{this.name}}
-      />
+  <div class="space-y-12">
+    <div class="border-b border-gray-900/10 pb-12">
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-4">
+          <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
+          <div class="mt-2">
+            <Input
+              id="name"
+              @type="text"
+              @value={{this.name}}
+              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
 
-      <label for="number">Card Info</label>
-      <Input
-        id="number"
-        @type="text"
-        @value={{this.number}}
-      />
+        <div class="sm:col-span-3">
+          <label for="number" class="block text-sm font-medium leading-6 text-gray-900">Card Info</label>
+          <div class="mt-2">
+            <Input
+              id="number"
+              maxlength="16"
+              @type="text"
+              @value={{this.number}}
+              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
 
-      CVC: <Input
-        id="cvc"
-        @type="text"
-        @value={{this.cvc}}
-      />
+        <div class="sm:col-span-1">
+          <label for="cvc" class="block text-sm font-medium leading-6 text-gray-900">CVC</label>
+          <div class="mt-2">
+            <Input
+              id="cvc"
+              maxlength="3"
+              @type="text"
+              @value={{this.cvc}}
+              class="block w-min rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+            {{!-- <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> --}}
+          </div>
+        </div>
 
-      Month: <Input
-        id="month"
-        @type="text"
-        @value={{this.month}}
-      />
+        <div class="sm:col-span-1">
+          <label for="month" class="block text-sm font-medium leading-6 text-gray-900">Month</label>
+          <div class="mt-2">
+            <Input
+              id="month"
+              maxlength="2"
+              @type="text"
+              @value={{this.month}}
+              class="block w-min rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+            {{!-- <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> --}}
+          </div>
+        </div>
 
-      Year: <Input
-        id="year"
-        @type="text"
-        @value={{this.year}}
-      />
+        <div class="sm:col-span-1">
+          <label for="year" class="block text-sm font-medium leading-6 text-gray-900">Year</label>
+          <div class="mt-2">
+            <Input
+              id="year"
+              maxlength="2"
+              @type="text"
+              @value={{this.year}}
+              class="block w-min rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+            {{!-- <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> --}}
+          </div>
+        </div>
 
-      <label for="shippingAddress">Shipping Address</label>
-      <Input
-        id="shippingAddress"
-        @type="text"
-        @value={{this.shippingAddress}}
-      />
-<div>
-  <button type="button" {{on "click" this.getCheckoutData}}>Checkout</button>
-</div>
+        <div class="col-span-full">
+          <label for="shippingAddress" class="block text-sm font-medium leading-6 text-gray-900">Shipping address</label>
+          <div class="mt-2">
+            <Input
+              id="shippingAddress"
+              @type="text"
+              @value={{this.shippingAddress}}
+              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex items-center justify-end gap-x-6">
+    <button type="button" class="text-sm font-semibold leading-6 text-gray-900" {{on "click" this.goToCart}}>Cancel</button>
+    <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" {{on "click" this.getCheckoutData}}>Checkout</button>
   </div>
 </div>
