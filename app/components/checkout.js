@@ -7,7 +7,7 @@ export default class CheckoutComponent extends Component {
   @service router;
 
   @action
-  getCheckoutData() {
+  async getCheckoutData() {
     // Create a OrderID
     const orderId = `order-${Math.floor(Math.random() * 10000)}-${this.cart.cart.cartId}`;
     const billingInfo = {
@@ -23,7 +23,8 @@ export default class CheckoutComponent extends Component {
     };
 
     console.log(billingInfo);
-    // this.cart.checkout(billingInfo);
+    await this.cart.checkout(billingInfo);
+    this.router.transitionTo('cart');
   }
 
   @action

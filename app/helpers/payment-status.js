@@ -2,7 +2,7 @@ export default function isActive(orderStatus) {
   if (orderStatus === 'FAILED') {
     return 'text-red-400';
   } else if (orderStatus === 'COMPLETED') {
-    return 'text-orange-500';
+    return 'text-green-500';
   } else {
     return 'text-orange-400';
   }
